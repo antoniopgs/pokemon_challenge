@@ -44,3 +44,8 @@ assert(gotta_catch_em_all("N daskl__?*+dSNsnjc  -  wjopfedWWsc6?5156S189145W=)(/
 assert(gotta_catch_em_all("NSNSNSNSNSNSNSNSNSNSNSNSNSNSNSN")) == 2, "Should be 2."
 # Linear Input:
 assert(gotta_catch_em_all("W" * 9999)) == 10000, "Should be 10000."
+
+while True:
+    user_input = input("Insert directions for Ash: ")
+    gotta_catch_em_all(user_input)
+
