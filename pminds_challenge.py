@@ -5,7 +5,7 @@ def gotta_catch_em_all(input_string):
         return 1
 
     # Receive and clean the input string. Helps security and efficiency:
-    directions = "".join([char for char in input_string if char in "NSEW"])
+    directions = "".join([char for char in input_string if char in "NSEO"])
 
     # If no valid directions are found in input string:
     if not directions:
@@ -18,15 +18,18 @@ def gotta_catch_em_all(input_string):
         
     else:
 
-        # An "NSN" movement is net equal to "N". Same for others shown in "replace" mehods. Helps efficiency:
-        while True:
+        # An "NSN" movement is net equal to "N". Same for remaining element pairs in "replacements". Helps efficiency:
+        replacements = [["NSN", "N"], ["SNS", "S"], ["EOE", "E"], ["OEO", "O"]]
+
+        # Implement a cycle to ensure replacements are possible. It will stop as soon as the directions stop getting smaller:
+        previous_length = len(directions) + 1
+        while previous_length != len(directions):
             previous_length = len(directions)
-            if "NSN" in directions: directions = directions.replace("NSN", "N")
-            if "SNS" in directions: directions = directions.replace("SNS", "S")
-            if "EWE" in directions: directions = directions.replace("EWE", "E")
-            if "WEW" in directions: directions = directions.replace("WEW", "W")
-            if len(directions) == previous_length:
-                break
+
+            # Iterate over "replacements" and replace optimized values where applicable:
+            for i in range(len(replacements)):
+                if replacements[i][0] in directions:
+                    directions = directions.replace(replacements[i][0], replacements[i][1])
         
         # The coordinate pair for Ash's current position (he begins at 0, 0):
         ash_x, ash_y = 0, 0
@@ -43,7 +46,7 @@ def gotta_catch_em_all(input_string):
                 ash_y -= 1
             elif char == "E":
                 ash_x += 1
-            elif char == "W":
+            elif char == "O":
                 ash_x -=1
                 
             # The "add" method will only add new entries to a set if said entry isn't already present. Helps efficiency:
@@ -59,11 +62,11 @@ assert(gotta_catch_em_all("")) == 1, "Should be 1."
 # No Valid Directions:
 assert(gotta_catch_em_all("kksvckbjnwjid9u43203pok -.çp5l+434e")) == 1, "Should be 1."
 # Poorly Formatted Input:
-assert(gotta_catch_em_all("N daskl__?*+dSNsnjc  -  wjopfedWWsc6?5156S189145W=)(/&J%$#  AE  sd)")) == 6, "Should be 6."
+assert(gotta_catch_em_all("N daskl__?*+dSNsnjc  -  wjopfedOOsc6?5156S189145O=)(/&J%$#  AE  sd)")) == 6, "Should be 6."
 # Back and Forth Input:
 assert(gotta_catch_em_all("NS" * 9999)) == 2, "Should be 2."
 # Linear Input:
-assert(gotta_catch_em_all("W" * 9999)) == 10000, "Should be 10000."
+assert(gotta_catch_em_all("O" * 9999)) == 10000, "Should be 10000."
 
 
 while True:
