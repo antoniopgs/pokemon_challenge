@@ -8,7 +8,7 @@ def gotta_catch_em_all(input_string):
     directions = "".join([char for char in input_string if char in "NSEW"])
 
     # If no valid directions are found in input string:
-    if directions == "[]":
+    if not directions:
         return 1
         
     """ If the set of the input string has length of 1, it means all chars are equal.
