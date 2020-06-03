@@ -43,4 +43,4 @@ assert(gotta_catch_em_all("N daskl__?*+dSNsnjc  -  wjopfedWWsc6?5156S189145W=)(/
 # Back and Forth Input:
 assert(gotta_catch_em_all("NSNSNSNSNSNSNSNSNSNSNSNSNSNSNSN")) == 2, "Should be 2."
 # Linear Input:
-assert(gotta_catch_em_all("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW")) == 112, "Should be 112."
+assert(gotta_catch_em_all("W" * 9999)) == 10000, "Should be 10000."
