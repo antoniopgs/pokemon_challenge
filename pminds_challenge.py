@@ -47,5 +47,5 @@ assert(gotta_catch_em_all("W" * 9999)) == 10000, "Should be 10000."
 
 while True:
     user_input = input("Insert directions for Ash: ")
-    gotta_catch_em_all(user_input)
+    print(f"{gotta_catch_em_all(user_input)}\n")
 
