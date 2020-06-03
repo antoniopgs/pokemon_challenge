@@ -6,7 +6,8 @@ while True:
     """ If the set of the input string has length of 1, it means all chars are equal.
     If all chars are equal, the number of caught Pokemon will equal the string's length + 1 (for the starting position)."""
     if len(set(movement_input)) == 1:
-        print(len(movement_input) + 1)    
+        print(len(movement_input) + 1)
+        
     else:
         # The coordinate pair for Ash's current position (he begins at 0, 0):
         ash_x, ash_y = 0, 0
