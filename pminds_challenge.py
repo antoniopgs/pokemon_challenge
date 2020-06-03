@@ -20,12 +20,12 @@ def gotta_catch_em_all(input_string):
 
         # An "NSN" movement is net equal to "N". Same for others shown in "replace" mehods. Helps efficiency:
         while True:
-            pre_length = len(directions)
-            directions = directions.replace("NSN", "N")
-            directions = directions.replace("SNS", "S")
-            directions = directions.replace("EWE", "E")
-            directions = directions.replace("WEW", "W")
-            if len(directions) == pre_length:
+            previous_length = len(directions)
+            if "NSN" in directions: directions = directions.replace("NSN", "N")
+            if "SNS" in directions: directions = directions.replace("SNS", "S")
+            if "EWE" in directions: directions = directions.replace("EWE", "E")
+            if "WEW" in directions: directions = directions.replace("WEW", "W")
+            if len(directions) == previous_length:
                 break
         
         # The coordinate pair for Ash's current position (he begins at 0, 0):
